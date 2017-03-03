@@ -2,6 +2,267 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff88">
+    android:background="@color/mybackground"
+    android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/mytitle">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/titleicon" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Day"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/mon1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bordercolor"
+                android:button="@null"
+                android:gravity="center"
+                android:text="周一"
+                android:textColor="@drawable/fontcolor"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/tue1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordercolor"
+                android:button="@null"
+                android:gravity="center"
+                android:text="周二"
+                android:textColor="@drawable/fontcolor"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/wed1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordercolor"
+                android:button="@null"
+                android:gravity="center"
+                android:text="周三"
+                android:textColor="@drawable/fontcolor"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/thurs1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordercolor"
+                android:button="@null"
+                android:gravity="center"
+                android:text="周四"
+                android:textColor="@drawable/fontcolor"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/fri1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordercolor"
+                android:button="@null"
+                android:gravity="center"
+                android:text="周五"
+                android:textColor="@drawable/fontcolor"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/sat1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordercolor"
+                android:button="@null"
+                android:gravity="center"
+                android:text="周六"
+                android:textColor="@drawable/fontcolor"
+                android:textSize="12sp" />
+
+            <CheckBox
+                android:id="@+id/sun1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bordercolor"
+                android:button="@null"
+                android:gravity="center"
+                android:text="周日"
+                android:textColor="@drawable/fontcolor"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="时段"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_alignParentBottom="true"
+            android:checkedButton="@+id/noon1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/noon1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordercolor"
+                android:button="@null"
+                android:gravity="center"
+                android:text="下午12:00-18:00"
+                android:textColor="@drawable/fontcolor"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/night1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordercolor"
+                android:button="@null"
+                android:gravity="center"
+                android:text="夜场18:00-24:00"
+                android:textColor="@drawable/fontcolor"
+                android:textSize="12sp" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="赛制"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/circleblue">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="5人制"
+                android:textColor="@color/myblue"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="匹配地址"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="9dp"
+            android:layout_height="13dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/go" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="四川省成都市武侯区"
+            android:textColor="@color/mywhite"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="114dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/elephant1" />
+
+        <TextView
+            android:id="@+id/start1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@drawable/start"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="开始"
+            android:textColor="#fff"
+
+            />
+    </FrameLayout>
 </LinearLayout>
