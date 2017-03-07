@@ -50,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.newuserRegist:
+                Intent intent1=new Intent(LoginActivity.this,RegistActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
