@@ -14,6 +14,11 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.yunzhidong.utils.Global;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,7 +41,7 @@ public class SettingPasswordActivity extends AppCompatActivity {
     @BindView(R.id.textRegeist)
     TextView textRegeist;
     private Unbinder unbinder;
-    private String stringPwd, stringRepwd,mIdentify;
+    private String stringPwd, stringRepwd,mIdentify,lat,lon;
     private AMapLocationClient mLocationClient = null;
     private AMapLocationClientOption mLocationOption = null;
 
@@ -45,9 +50,9 @@ public class SettingPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_password);
         unbinder = ButterKnife.bind(this);
-        Intent intent=getIntent();
-        mIdentify=intent.getStringExtra("identify");
-        Log.e("tag",mIdentify);
+//        Intent intent=getIntent();
+//        mIdentify=intent.getStringExtra("identify");
+//        Log.e("tag",mIdentify);
         mLocationOption = new AMapLocationClientOption();
         mLocationClient = new AMapLocationClient(this);
         mLocationClient.setLocationListener(mLocationListener);
@@ -79,6 +84,8 @@ public class SettingPasswordActivity extends AppCompatActivity {
                     aMapLocation.getBuildingId();//获取当前室内定位的建筑物Id
                     aMapLocation.getFloor();//获取当前室内定位的楼层
                     //aMapLocation.getGpsStatus();//获取GPS的当前状态;
+                    lat=aMapLocation.getLatitude()+"";
+                    lon=aMapLocation.getLongitude()+"";
                     Log.e("tag","定位成功"+"经度："+aMapLocation.getLongitude()+"纬度："+aMapLocation.getLatitude());
                 }else {
                     //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
@@ -96,6 +103,7 @@ public class SettingPasswordActivity extends AppCompatActivity {
     protected void onDestroy() {
         unbinder.unbind();
         super.onDestroy();
+        mLocationClient.stopLocation();
     }
 
 
@@ -116,11 +124,42 @@ public class SettingPasswordActivity extends AppCompatActivity {
                         if (!stringPwd.equals(stringRepwd)) {
                             new AlertDialog.Builder(this).setTitle("友情提示").setMessage("两次密码输入不一致，请重新输入").setPositiveButton("OK", null).show().setCancelable(false);
                         } else {
+                            regist();
                             Log.e("tag", "注册成功");
                         }
                     }
                 }
                 break;
         }
+    }
+    private void regist(){
+        RequestParams params=new RequestParams(Global.global().getTestUrl()+"/accounts/register/confirm");
+        params.addBodyParameter("password",stringPwd);
+        params.addBodyParameter("passwords",stringRepwd);
+        params.addBodyParameter("identify","MDAwMDAwMDAwMISt0N2CraLctXZ1YrGogWavr4bbf3Nybw");
+        params.addBodyParameter("lat",lat);
+        params.addBodyParameter("lng",lon);
+        Log.e("tag","参数说明："+stringPwd+"--"+stringRepwd+"---"+lat+"---"+lon);
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Log.e("tag","请求成功"+result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                Log.e("tag","请求失败");
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
     }
 }

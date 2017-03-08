@@ -15,7 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.yunzhidong.bean.VercodeBean;
 import com.yunzhidong.utils.ClassPathResource;
 import com.yunzhidong.utils.CountDownTimerUtils;
 import com.yunzhidong.utils.Global;
@@ -173,23 +175,22 @@ public class RegistActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String result) {
                 Log.e("tag",result);
-                try {
-                    JSONObject json = new JSONObject(result);
-                    Log.e("tag",json.getString("status"));
-                    if (json.getString("status").equals("1")) {
-                        //String mIdentify=json.getString("identify");
+                Gson gson=new Gson();
+                VercodeBean vercodeBean=gson.fromJson(result,VercodeBean.class);
+
+                    if (vercodeBean.getStatus()==1) {
+                        String mIdentify=vercodeBean.getData().getIdentify();
+                        Log.e("tag","识别码"+mIdentify);
                         Intent intent = new Intent(RegistActivity.this, SettingPasswordActivity.class);
-                        //intent.putExtra("identify",mIdentify);
+                        intent.putExtra("identify",mIdentify);
                         startActivity(intent);
                         finish();
 
-                    } else if (json.getString("status").equals("3")) {
+                    } else if (vercodeBean.getStatus()==3) {
                         new AlertDialog.Builder(RegistActivity.this).setTitle("友情提示").setMessage("验证码错误，请重新输入").setPositiveButton("OK", null).show().setCancelable(false);
 
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
             }
 
             @Override
